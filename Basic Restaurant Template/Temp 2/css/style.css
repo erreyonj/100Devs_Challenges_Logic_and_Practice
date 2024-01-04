@@ -1,0 +1,237 @@
+/* Box Model Hack */
+* {
+     box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+html {
+     font-size: 62.5%;
+}
+
+/* body {
+
+} */
+
+body * {
+     text-decoration: none;
+     list-style: none;
+     font: 1.3rem/1.5em 'Rubik', Helvetica, "sans serif";
+}
+
+ul {
+     padding: 0;
+}
+
+h1 {
+     font: 9rem 'Taviraj', Helvetica;
+     font-weight: 600;
+     line-height: 1.1em;
+     margin: 1% auto;
+}
+
+h2 {
+     font: 7rem 'Taviraj', Helvetica;
+     font-weight: 600;
+     line-height: 1.1em;
+     margin: 1% auto;
+}
+
+h4 {
+     font-size: 1.5rem;
+     color: rgb(198,10,57);
+     margin: 0;
+}
+
+.btn {
+     background: rgb(198,10,57);
+     height: 55px;
+     width: 130px;
+     justify-content: center;
+     align-content: center;
+     color: white;  
+     border: rgb(198,10,57);
+     padding: 14px 0;
+     border-radius: 0 6px 6px 0;
+     font-size: 1.6rem;
+}
+
+header ul, .homeAboutUs, .menuPhotos, header, .main.container, .mainForm, .btn, .primaryContainer, .followerHub, .orderSection, .menu.container, .orderHead, .menuOptions, .aboutUs.container {
+     display: flex;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+
+/******************************************
+/* HEADER
+/*******************************************/
+header {
+     position: fixed;
+     width: 100%;
+     place-content: center flex-end;
+     background: rgb(198,10,57);
+}
+header a {
+     color: white;
+}
+nav {
+     width: 50%;
+}
+header ul {
+     place-content: center space-around;
+     flex-direction: row;
+}
+
+/******************************************
+/* MAIN
+/*******************************************/
+
+main {
+     background: url(mexresprototype.png) 0px 50% no-repeat;
+     background-size: cover;
+     flex-direction: column;
+     height: 815px;
+}
+.main {
+     margin: 0 7%;
+}
+.main.container {
+     width: 45%;
+     flex-direction: column;
+     place-content: center center;
+     flex: 1 1 50%;
+}
+.primaryContainer {
+     place-content: center;
+}
+.mainForm {    
+     margin: 3% 0;
+}
+.siteSearch {
+     width: 80%;
+     display: flex;
+}
+.siteSearch input {
+     background: white;
+     flex: 1;
+     border: 1px solid black;
+     border-radius: 6px 0 0 6px;
+     padding-left: 2%;
+     outline: none;
+}
+.siteSearch.btn {
+     flex: 1;
+}
+.followerHub i {
+     font-size: 2em;
+     color: rgb(198,10,57);
+}
+.followerHub {
+     width: 50%;
+     place-content: center space-around;
+}
+
+/******************************************
+/* ABOUT-US
+/*******************************************/
+
+.homeAboutUs {
+     background: url(mexresprototype2.png) 0px 50% no-repeat;
+     background-size: cover;
+     justify-content: center;
+     height: 815px;
+}
+
+.aboutUs.container {
+     width: 40%;
+     flex-flow: column wrap;
+     place-content: center center;
+}
+
+.aboutUs {
+     margin-left: 50%;
+}
+
+.homeAboutUs p {
+     font-size: 1.4rem;
+}
+
+
+/******************************************
+/* MENU-ORDERING
+/*******************************************/
+
+.homeOrderSection {
+     background: url(mexresprototype3.png) 0px 50% no-repeat;
+     background-size: cover;
+     height: 815px;
+     justify-content: center;
+}
+
+.menu.container {
+     flex-direction: column;
+     margin: 0 10%;
+     padding: 2% 0;
+}
+
+.orderHead {
+     flex-direction: column;
+     align-items: center;
+}
+
+.menuOptions {
+     width: 45%;
+     margin: 3%;
+     justify-content: space-around;
+
+}
+
+.menuOptions a {
+     color: black;
+     padding-bottom: 2%;
+     border-bottom: 1.5px solid rgb(154, 154, 154);
+}
+
+.menuPhotos {
+     margin: 0 15%;
+     justify-content: space-around;
+}
+
+.menuItems {
+  height: 375px;  
+}
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+
+@media all and (max-width:450px) {
+     .hideForMobile {
+          display: none;
+          visibility: hidden;
+     }
+     nav {
+          width: 38%;
+     }
+     header ul {
+          justify-content: space-evenly;
+     }
+}
