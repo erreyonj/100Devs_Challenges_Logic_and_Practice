@@ -45,6 +45,83 @@ console.log(myPhNum)
 
 
 
+///////////////
+// CHALLENGE
+///////////////
+// Trolls are attacking your comment section!
+
+// A common way to deal with this situation is to remove all of the vowels from the trolls' comments, neutralizing the threat.
+
+// Your task is to write a function that takes a string and return a new string with all vowels removed.
+
+// For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".
+
+// Note: for this kata y isn't considered a vowel.
+
+
+///////////////
+// ATTEMPTS
+///////////////
+
+function disemvowel(str) {
+    const trollBreaker = str.replaceAll(/[a*e*i*o*u*]/gi,'')
+    return trollBreaker;
+}
+
+const cussing = 'lol Kiss my ass you bitch!'
+console.log(disemvowel(cussing))
+//success! welp. Learning regex in the previous challenge made this easy
 
 
 
+
+///////////////
+// CHALLENGE
+///////////////
+
+// The Western Suburbs Croquet Club has two categories of membership, Senior and Open. They would like your help with an application form that will tell prospective members which category they will be placed.
+
+// To be a senior, a member must be at least 55 years old and have a handicap greater than 7. (7 down to -2 no?) In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap. (best players have -2)
+
+// Input
+// Input will consist of a list of pairs. Each pair contains information for a single potential member. Information consists of an integer for the person's age and an integer for the person's handicap.
+
+// Output
+// Output will consist of a list of string values (in Haskell and C: Open or Senior) stating whether the respective member is to be placed in the senior or open category.
+
+// Example
+// input =  [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]
+// output = ["Open", "Open", "Senior", "Open", "Open", "Senior"]
+
+///////////////
+// ATTEMPTS
+///////////////
+
+const input =  [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]
+
+// function openOrSenior(data){
+//     const memStatus = data.map((arr)=>{
+//         if(arr[0]>54){
+//             if(arr[1]>= 7){
+//                 return 'Senior'
+//             }
+//         } 
+//         else return 'Open'
+//     })
+//     return memStatus
+// }
+
+const getMemStatus = openOrSenior(input)
+console.log(getMemStatus);
+//success!
+
+//refactor with ternary?
+function openOrSenior(data){
+    return data.map((arr)=>arr[0]>54 && arr[1]>= 7 ? 'Senior' : 'Open')
+}
+//success!!
+
+//destructure for ease and readability, copied from CodeWars
+function openOrSenior(data){
+    return data.map(([age,handicap])=> (age>54 && handicap>= 7) ? 'Senior' : 'Open')
+}
