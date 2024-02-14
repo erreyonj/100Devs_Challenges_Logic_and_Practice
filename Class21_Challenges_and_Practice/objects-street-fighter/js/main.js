@@ -1,7 +1,8 @@
 //Create a street fighter constructor that makes fighting game characters with 4 properties and 3 methods
 
 
-const Fighter = (hp,spd,pow,name)=>{
+//Not quite right on this first line
+const Ibuki = new Fighter (hp,spd,pow,name)=>{
     this.NAME = name
     this.HP = hp
     this.SPD = spd 
@@ -27,4 +28,6 @@ const Fighter = (hp,spd,pow,name)=>{
         }
     }
 }
-const Ibuki = new Fighter(,)
+const ibuki = new Fighter(50,15,35, 'Ibuki')
+
+console.log(ibuki);
