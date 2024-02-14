@@ -1,1 +1,1 @@
-The work here is comprised of basic website templates that can be customzed for customers seeking web development solutions
+Hey you, thanks for creeping. Just trying to get my reps in with Challenges. Some 100Devs coursework, some CodeWars, some other stuff.
