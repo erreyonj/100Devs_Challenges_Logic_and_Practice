@@ -1,4 +1,6 @@
+//////////////
 // 2/14/24
+//////////////
 
 ///////////////
 // CHALLENGE
@@ -25,14 +27,14 @@ const createPhoneNumber = (nums) => {
 console.log(createPhoneNumber(digits));
 // sucess!!
 
-// Another Codewars, trying out regex:
+// Different solution from Codewars, trying out regex:
 function makePhNum(numbers){
     return numbers.join('').replace(/(...)(...)(.*)/, '($1) $2-$3');
     // in this case the dots here (...) are not spread syntax, they represent three separate instances of the "any" character class. So the Regex group takes:
     // (...) a group of any three charaters matched from the numbers.join() call
     // (...) another group of any three charaters matched from the remaining numbers.join() call
     // (.*) THE group of any remaining characters from the numbers.join() call
-    // then backreferences first group inside parentheses inside of thestring replacement with a space followed by backreferencing the other two groups
+    // then backreferences first group inside parentheses inside of the string replacement with a space followed by backreferencing the other two groups
 }
 
 function aChicagoPhNum(numbers){
@@ -64,8 +66,7 @@ console.log(myPhNum)
 ///////////////
 
 function disemvowel(str) {
-    const trollBreaker = str.replaceAll(/[a*e*i*o*u*]/gi,'')
-    return trollBreaker;
+    return str.replaceAll(/[a*e*i*o*u*]/gi,'')
 }
 
 const cussing = 'lol Kiss my ass you bitch!'
@@ -117,11 +118,13 @@ console.log(getMemStatus);
 
 //refactor with ternary?
 function openOrSenior(data){
-    return data.map((arr)=>arr[0]>54 && arr[1]>= 7 ? 'Senior' : 'Open')
+    return data.map((arr)=>arr[0]>54 && arr[1] > 7 ? 'Senior' : 'Open')
 }
 //success!!
 
 //destructure for ease and readability, copied from CodeWars
 function openOrSenior(data){
-    return data.map(([age,handicap])=> (age>54 && handicap>= 7) ? 'Senior' : 'Open')
+    return data.map(([age,handicap])=> (age > 54 && handicap > 7) ? 'Senior' : 'Open')
 }
+
+
