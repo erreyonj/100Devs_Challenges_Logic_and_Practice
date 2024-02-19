@@ -209,7 +209,7 @@ let twoSum = function(nums, target) {
 }
 
 
-console.log(twoSum(nums,6))
+// console.log(twoSum(nums,6))
 
 
 /////// GRABBED SOLUTION ////////
@@ -234,3 +234,68 @@ var twoSum2 = function(nums, target) {
     
     return [];
 };
+
+
+
+////////////////
+// 2/19/24
+////////////////
+
+
+// In this exercise, you will develop a function named decode(message_file). This function should read an encoded message from a .txt file and return its decoded version as a string.
+
+// Note that you can write your code using any language and IDE you want (Python is preferred if possible, but not mandatory).
+
+// Your function must be able to process an input file with the following format:
+
+// 3 love
+// 6 computers
+// 2 dogs
+// 4 cats
+// 1 I
+// 5 you
+// In this file, each line contains a number followed by a word. The task is to decode a hidden message based on the arrangement of these numbers into a "pyramid" structure. The numbers are placed into the pyramid in ascending order, with each line of the pyramid having one more number than the line above it. The smallest number is 1, and the numbers increase consecutively, like so:
+
+//   1
+//  2 3
+// 4 5 6
+// The key to decoding the message is to use the words corresponding to the numbers at the end of each pyramid line (in this example, 1, 3, and 6). You should ignore all the other words. So for the example input file above, the message words are:
+
+// 1: I
+// 3: love
+// 6: computers
+// and your function should return the string "I love computers".
+
+let message = ['3 love','6 computers','2 dogs','4 cats','1 I','5 you']
+
+
+
+function Decode(message_file){
+    //triangle function that could be used to sort any numbered array into pyramid
+    function pyramidFunc(num){
+        return (num*(num+1))/2
+    }
+
+    //need function that sorts a new array by number appearing in element
+    let primeSort = message_file.sort((a,b)=>a.localeCompare(b))
+    
+
+    //function that ejects an element from new array to new array then increases the number of ejected elements until all elements ejected
+    let peak1 = primeSort.slice(0,1)
+    let peak2 = primeSort.slice(1,3)
+    let peak3 = primeSort.slice(3,6)
+    
+
+    //func that puts last element in each ejected array into new array with no numbers
+    let peak1pop = peak1.pop().slice(2)
+    let peak2pop = peak2.pop().slice(2)
+    let peak3pop = peak3.pop().slice(2)
+
+    //print result
+    console.log(`${peak1pop} ${peak2pop} ${peak3pop}`)
+}
+
+Decode(message)
+
+
+//Not quite there yet with methods and all required to make this function respond to an array with any number of elements.
