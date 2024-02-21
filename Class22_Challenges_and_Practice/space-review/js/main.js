@@ -24,9 +24,7 @@ console.log(kaminari('paper'));
 
 const isPalindrome = (str) => {
     let reversed = kaminari(str)
-    if(reversed === str){
-        return 'Thats a Palindrome bay-beeee'
-    } else return 'That aint it boss'
+    return reversed = str ? 'Thats a Palindrome bay-beeee' : 'That aint it boss'
 }
 
 console.log(isPalindrome('racecar'));
