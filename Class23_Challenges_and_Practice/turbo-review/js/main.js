@@ -4,7 +4,7 @@
 const sentence = 'Is this a question?'
 
 function isQuestion(str){
-    return str.includes('?') ? 'Issa Question' : 'Not a question!'
+    return str.endsWith('?') ? 'Issa Question' : 'Not a question!'
 }
 
 console.log(isQuestion(sentence))
@@ -34,16 +34,24 @@ function rockPaperScissors(){
 
 function challenge(choice){
     let botChoice = rockPaperScissors()
-    if(choice == 'rock' && botChoice == 'scissors'){
-        console.log('You won!')
-    } else if(choice == 'paper' && botChoice == 'rock'){
-        console.log('You won!')
-    } else if(choice == 'scissors' && botChoice == 'paper'){
-        console.log('You won!')
-    } else console.log('You didn\'t win');
+    return (choice === 'rock' && botChoice === 'scissors') ||
+    (choice === 'paper' && botChoice === 'rock') ||
+    (choice === 'scissors' && botChoice === 'paper') ?
+    console.log('You Won!') :
+    (choice === botChoice) ?
+    console.log('Draw!') :
+    console.log('You Lost!')
 }
+
+console.log(challenge('rock'))
 
 
 
 //*Loops*
 //Create a function that takes an array of choices. Play the game x times where x is the number of choices in the array. Print the results of each game to the console.
+
+function plyGames(arr){
+    arr.forEach(choice=>challenge(choice))
+}
+
+console.log(plyGames(['rock','paper','paper']));

@@ -48,7 +48,11 @@ salamence.pokeType()
 
 salamence.lv = 100
 
-Pokemon.prototype.exp = 5000
+Pokemon.prototype.exp = 10000
 
 console.log(salamence);
 console.log(salamence.exp);
+console.log(salamence.lv);
+
+salamence.lv = salamence.lv -= 1
+console.log(salamence.lv);
