@@ -599,9 +599,10 @@ let bigMessage = [
 //     return (num*(num+1))/2
 // }
 
-
 let message3 = ['4 mizu','99 oto','3 this','5 kaminari','2 mizu','1 think','6 should','8 oto','7 kaminari','10 work','11 huh?', '12 poke', '13 bleep', '148 cash', '15 I think']
 
+
+// Completed rough version
 function decode(arr){
     let decodedArr = []
 
@@ -671,8 +672,6 @@ function decode(arr){
 /////////////
 //CLEANED ALL UNECESSARY PSUEDO CODE, LEFT COMMMENTS 
 //////////////
-
-
 function decode2(arr){
     let decodedArr = []
     //need function that sorts input array by the number appearing in element
