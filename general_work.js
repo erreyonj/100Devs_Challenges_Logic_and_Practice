@@ -752,13 +752,13 @@ function decode2(arr){
 
 let isSquare = function(num){
     // SUCCESS
-    // let rootTest = Math.sqrt(num)%1
-    // if(rootTest < 0 || rootTest === NaN){
-    //     return false
-    // } else if(rootTest === 0){
-    //     return true
-    // }
-    // return false
+    let rootTest = Math.sqrt(num)%1
+    if(rootTest < 0 || rootTest === NaN){
+        return false
+    } else if(rootTest === 0){
+        return true
+    }
+    return false
 
     // with ternary ??
     // rootTest < 0 || rootTest === NaN ?
@@ -769,9 +769,44 @@ let isSquare = function(num){
 
     // REFACTOR with Codewars Solution
     //ternary not needed can simply use comparison to return bool:
-    return Math.sqrt(num)%1 === 0
+    // return Math.sqrt(num)%1 === 0
 
 
   }
 
 // console.log(isSquare())
+
+
+////////////////
+// 3/3/24
+////////////////
+// Caught Covid :( Took a small break but we back at it.
+// Doing 100Devs stuff here for now. Trying to get through the
+// the remaining classes so I can just focus on 100hrs prj.
+
+
+class NeflixShow{
+    constructor(title,numOfSeasons,epsPerSeason,rating){
+        this.title = title
+        this.numOfSeasons = numOfSeasons
+        this.epsPerSeason = epsPerSeason
+        this.rating = rating
+    }
+    list(){
+        console.log(`${this.title} has been added to your list!`)
+    }
+    unlist(){
+        console.log(`${this.title} has been removed from your list!`)
+    }
+    userRating(bool){
+        if(bool){
+            console.log('Great! We\'ll send you more like this!')
+        } else console.log('Okay. We won\'t suggest shows like this.')
+    }
+}
+
+const waterfalls = new NeflixShow('Waterfalls',1,12,3.2)
+
+console.log(waterfalls.epsPerSeason)
+console.log(waterfalls.list())
+console.log(waterfalls.userRating(false))

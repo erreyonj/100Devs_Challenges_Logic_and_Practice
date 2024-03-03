@@ -48,16 +48,22 @@ img{
 }
 
 input{
-  width: 300px;
+  width: 135px;
   margin: 0 auto;
   font-size: 1.45rem;
   text-align: center;
   background-color: transparent;
   border: none;
   outline: none;
-  color: rgb(170, 144, 240)
-  
+  color: rgb(170, 144, 240);
+}
 
+::-webkit-calendar-picker-indicator {
+  filter: invert(1)
+          brightness(60%)
+          sepia(50%)
+          saturate(1000%)
+          hue-rotate(260deg);
 }
 
 iframe{
