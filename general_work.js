@@ -781,8 +781,7 @@ let isSquare = function(num){
 // 3/3/24
 ////////////////
 // Caught Covid :( Took a small break but we back at it.
-// Doing 100Devs stuff here for now. Trying to get through the
-// the remaining classes so I can just focus on 100hrs prj.
+// Doing most 100Devs stuff here for now. Trying to get through the remaining classes so I can just focus on 100hrs prj.
 
 
 class NeflixShow{
@@ -810,3 +809,7 @@ const waterfalls = new NeflixShow('Waterfalls',1,12,3.2)
 console.log(waterfalls.epsPerSeason)
 console.log(waterfalls.list())
 console.log(waterfalls.userRating(false))
+
+
+// Class 27: APIs, Card Game
+// Class 28: Professional Checklist, DnD API, Book API
