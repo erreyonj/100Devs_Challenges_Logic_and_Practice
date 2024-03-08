@@ -721,7 +721,7 @@ function decode2(arr){
 ////////////////
 
 ////////////////
-// CODE WARS 7 KATA CHALLENGE
+// CODE WARS 7 KYU CHALLENGE
 ////////////////
 
 // A square of squares
@@ -806,10 +806,237 @@ class NeflixShow{
 
 const waterfalls = new NeflixShow('Waterfalls',1,12,3.2)
 
-console.log(waterfalls.epsPerSeason)
-console.log(waterfalls.list())
-console.log(waterfalls.userRating(false))
+// console.log(waterfalls.epsPerSeason)
+// console.log(waterfalls.list())
+// console.log(waterfalls.userRating(false))
 
 
 // Class 27: APIs, Card Game
 // Class 28: Professional Checklist, DnD API, Book API
+// Class 29: Js review
+// Class 30: Encapsulation, Abstraction
+// Class 31: Inheritance, Polymorphism
+
+class Proj{
+    constructor(fileName, fileSize){
+        this.fileName = fileName
+        this.fileSize = fileSize
+    }
+    describe(){
+        return `${this.fileName} is a ${this.fileType} file that is ${this.fileSize}Mb`
+    }
+}
+
+class KoalaFile extends Proj{
+    constructor(fileName,fileSize){
+        super(fileName,fileSize)
+        this.fileType = 'Koala'
+    }
+}
+
+const intro = new KoalaFile('Intro',32)
+
+
+////////////
+// 3/5/24
+////////////
+
+
+////////////
+// 6 KYU
+////////////
+
+// Complete the solution so that the function will break up camel casing, using a space between words.
+
+// Example
+// "camelCasing"  =>  "camel Casing"
+// "identifier"   =>  "identifier"
+// ""             =>  ""
+
+
+////////////
+// ATTEMPT
+////////////
+
+// SUCCESS
+function solution(str) {
+    return str.split(/(?=[A-Z])/).join(' ')
+}
+
+
+// W/O regex from CODEWARS
+// function solution(str) {
+//     let broke = str.split('').map(function(ltr){
+//         if(ltr === ltr.toUpperCase()){
+//             el = ' ' + el
+//         }
+//         return el
+//     })
+//     return broke.join('')
+// }
+
+
+//////////////
+// 6 KYU
+//////////////
+
+// A child is playing with a ball on the nth floor of a tall building. The height of this floor above ground level, h, is known.
+
+// He drops the ball out of the window. The ball bounces (for example), to two-thirds of its height (a bounce of 0.66).
+
+// His mother looks out of a window 1.5 meters from the ground.
+
+// How many times will the mother see the ball pass in front of her window (including when it's falling and bouncing)?
+
+// Three conditions must be met for a valid experiment:
+// Float parameter "h" in meters must be greater than 0
+// Float parameter "bounce" must be greater than 0 and less than 1
+// Float parameter "window" must be less than h.
+// If all three conditions above are fulfilled, return a positive integer, otherwise return -1.
+
+// Note:
+// The ball can only be seen if the height of the rebounding ball is strictly greater than the window parameter.
+
+// Examples:
+// - h = 3, bounce = 0.66, window = 1.5, result is 3
+
+// - h = 3, bounce = 1, window = 1.5, result is -1 
+
+// (Condition 2) not fulfilled).
+
+
+
+/////////////
+// ATTEMPT
+/////////////
+
+// SUCCESS
+function bouncingBall(h,  bounce,  window) {
+    if(h < 0 || bounce >= 1 || bounce <= 0 || window > h){
+        return -1
+    }
+    j = 0
+    while(h > window){
+        h*=bounce
+        console.log(h)
+        j+=2
+    }
+    return j-1
+}
+
+
+
+
+//////////////
+// 6 KYU
+//////////////
+
+// Task
+// In this simple Kata your task is to create a function that turns a string into a Mexican Wave. You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up. 
+// Rules
+//  1.  The input string will always be lower case but maybe empty.
+
+//  2.  If the character in the string is whitespace then pass over it as if it was an empty seat
+// Example
+// wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
+
+// Close but replace only replaces first instance
+// function wave(str){
+//     let block = str.split(' ').join('').lowerCase()
+//     let chain = []
+//     for(let i = 0; i < block.length; i++){
+//         // I want str with the char at i to UpperCase
+//         let part = block.replace(block.charAt(i),block.charAt(i).toUpperCase()) 
+//         chain.push(part)
+//     }
+//     return chain
+// }
+
+
+// function wave(str){
+//     let block = str.split(' ').join('').toLowerCase()
+//     let chain = []
+//     for(let i = 0; i < block.length; i++){
+//         let part = block.slice(0).split('')
+//         part[i] = block[i].toUpperCase()
+//         let newPart = part.join('')
+//         chain.push(newPart)
+//     }
+//     return chain
+// }
+
+
+// doesn't handle multi words but handles empty space
+// function wave(str){
+//     // let block = str.split(' ').join('').toLowerCase()
+//     let chain = []
+//     for(let i = 0; i < str.length; i++){
+//         let part = str.slice(0).split('')
+//         part[i] = str[i].toUpperCase()
+//         let newPart = part.join('')
+//         chain.push(newPart)
+//     }
+//     return chain
+// }
+
+
+// COMBINED BUT MAN IS THIS UGLY
+function wave(str){
+    let chain = []
+    if(str.slice(0).split(' ').length > 1){
+        for(let i = 0; i < str.length; i++){
+            // I want str with the char at i to UpperCase
+            let part = str.replace(str.charAt(i),str.charAt(i).toUpperCase()) 
+            chain.push(part)
+        }
+        return chain
+    } else{
+        for(let i = 0; i < str.length; i++){
+            let part = str.slice(0).split('')
+            part[i] = str[i].toUpperCase()
+            let newPart = part.join('')
+            chain.push(newPart)
+        } 
+        return chain
+    }
+}
+
+// STILL NO :(
+
+
+////////////
+// 3/6/24
+////////////
+
+// Promises..
+
+function plus(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(_=>{
+            console.log('iz true')
+            const error = false
+
+            if(!error){
+                resolve()
+            } else {
+                reject('this is in the err obj?')
+            }
+
+        },3000)
+    })
+}
+
+function isTrue(){
+    setTimeout(_=>{console.log(2*2)},1000)
+}
+
+function isFalse(obj){
+    if(obj){
+        return 3*7
+    } return 5*4
+}
+
+plus()
+    .then(isTrue)
+    .catch(err => console.log(err))
+
