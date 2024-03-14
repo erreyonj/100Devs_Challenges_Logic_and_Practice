@@ -1014,7 +1014,7 @@ function plus(){
     return new Promise((resolve,reject)=>{
         setTimeout(_=>{
             console.log('iz true')
-            const error = false
+            const error = true
 
             if(!error){
                 resolve()
@@ -1036,7 +1036,206 @@ function isFalse(obj){
     } return 5*4
 }
 
-plus()
-    .then(isTrue)
-    .catch(err => console.log(err))
+// plus()
+//     .then(isTrue)
+//     .catch(err => console.log(err))
 
+
+////////////
+// 3/9/24
+////////////
+
+
+// From Js.info Async/Await 
+///////////
+// Rewrite as async/await
+///////////
+
+// function loadJson(url) {
+//     return fetch(url)
+//       .then(response => {
+//         if (response.status == 200) {
+//           return response.json();
+//         } else {
+//           throw new Error(response.status);
+//         }
+//       });
+//   }
+  
+//   loadJson('https://javascript.info/no-such-user.json')
+//     .catch(alert); // Error: 404
+
+async function loadJson(url){
+    let response =  await fetch(url)
+    if(response.status === 200){
+        return response.json()
+        // missing following lines
+        // let json = await response.json()
+        //  return json
+    } else {
+        throw new Error(response.status)
+    }
+}
+
+// loadJson('https://javascript.info/no-such-user.json')
+//     .catch(alert);
+
+
+
+///////////
+// Rewrite as async/await
+///////////
+
+class HttpError extends Error {
+    constructor(response) {
+      super(`${response.status} for ${response.url}`);
+      this.name = 'HttpError';
+      this.response = response;
+    }
+}
+  
+async function loadJson(url) {
+    let res = await fetch(url)
+    if (res.status == 200) {
+        let json = await res.json()
+        return json
+    } else {
+        throw new HttpError(res);
+    }
+}
+
+  
+// Ask for a user name until github returns a valid user
+async function demoGithubUser() {
+    // had to copy solution
+    let user;
+    while(true){
+        let name = prompt("Enter a name?", "iliakan")
+        try{
+            user = await loadJson(`https://api.github.com/users/${name}`)
+            break
+        } catch(err){
+            if (err instanceof HttpError && err.response.status == 404) {
+                alert("No such user, please reenter.")
+            } else {
+                throw err;
+            }
+        }
+    }
+
+    alert(`Full name: ${user.name}.`)
+    return user
+}
+  
+// demoGithubUser()
+    // .catch(err => {
+    //     if (err instanceof HttpError && err.response.status == 404) {
+    //         alert("No such user, please reenter.");
+    //         return demoGithubUser();
+    //     } else {
+    //         throw err;
+    //     }
+    // })
+
+///////////
+// Rewrite as async/await
+///////////
+
+// We have a “regular” function called f. How can you call the async function wait() and use its result inside of f?
+
+async function wait() {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    return 10;
+  }
+  
+  function f() {
+    // didnt over think this, it was pretty easy
+    wait().then(result => {
+        console.log(result)
+    })
+
+  }
+
+//   f()
+
+
+////////////
+// 3/12/24
+////////////
+
+
+////////////
+// Code Wars 
+////////////
+
+////////////
+// 5 Kyu 
+////////////
+
+
+// Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+
+// * url = "http://github.com/carbonfive/raygun" -> domain name = "github"
+// * url = "http://www.zombie-bites.com"         -> domain namee-bites"
+// * url = "https://www.cnet.com"                -> domain name = cnet"
+
+
+function domainName(url){
+    // success with no Regex
+    let prefix1 = 'http://'
+    let prefix2 = 'http://www.'
+    let prefix3 = 'https://'
+    let prefix4 = 'https://www.'
+    let prefix5 = 'www'
+    let domain;
+    if(url.includes(prefix1) || url.includes(prefix2) || url.includes(prefix3) || url.includes(prefix4) || url.includes(prefix5)){
+        if(url.includes('www')){
+            const ending = url.slice(url.indexOf('.')+1)
+            const ending2 = ending.slice(0,ending.indexOf('.'))
+            domain = ending2
+        } else if(url.includes('https')){
+            const ending = url.slice(8)
+            const ending2 = ending.slice(0,ending.indexOf('.'))
+            domain = ending2
+        } else if(url.includes('http')){
+            const ending = url.slice(7)
+            console.log(ending)
+            const ending2 = ending.slice(0,ending.indexOf('.'))
+            domain = ending2
+        } 
+    } else {
+        const ending = url.slice(0,url.indexOf('.'))
+        domain = ending 
+    }
+    return domain
+}
+
+// console.log(domainName('www.xakep.ru'))
+
+'http://i73tdalvbff5l-n17bont.tv/archive/'
+
+
+//////////////
+// 5 Kyu
+//////////////
+
+// Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
+
+// moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]
+
+let mizu = [false,1,0,1,2,0,1,3,"a"]
+let mizu2 = [1,2,0,1,0,1,0,3,0,1]
+let mizu3 = [ false, '5', false, '1', false, true, '5', '4', '2', 9, 6, '6', '8', null, [], 8, {}, {}, {}, 5, {}, '0', 1, true ]
+let mizu4 = [ 9, [], '0', '4', '4', null, '7', '1', [], '6', false, true, 9, '0', '1', [], null, +0, +0 ]
+
+function moveZeros(arr) {
+    const zeros = arr.filter(item => item === '0' || item === 0)
+    let lessZeros = arr.filter(item => item !== '0' && item !== 0).push(zeros)
+    // zeros.forEach(item => {
+    //     lessZeros.push(item)
+    // })
+    return lessZeros
+}
+
+console.log(moveZeros(mizu4))
