@@ -839,17 +839,17 @@ function isFalse(obj){
 //   loadJson('https://javascript.info/no-such-user.json')
 //     .catch(alert); // Error: 404
 
-async function loadJson(url){
-    let response =  await fetch(url)
-    if(response.status === 200){
-        return response.json()
-        // missing following lines
-        // let json = await response.json()
-        //  return json
-    } else {
-        throw new Error(response.status)
-    }
-}
+// async function loadJson(url){
+//     let response =  await fetch(url)
+//     if(response.status === 200){
+//         return response.json()
+//         // missing following lines
+//         // let json = await response.json()
+//         //  return json
+//     } else {
+//         throw new Error(response.status)
+//     }
+// }
 
 // loadJson('https://javascript.info/no-such-user.json')
 //     .catch(alert);
@@ -868,38 +868,38 @@ class HttpError extends Error {
     }
 }
   
-async function loadJson(url) {
-    let res = await fetch(url)
-    if (res.status == 200) {
-        let json = await res.json()
-        return json
-    } else {
-        throw new HttpError(res);
-    }
-}
+// async function loadJson(url) {
+//     let res = await fetch(url)
+//     if (res.status == 200) {
+//         let json = await res.json()
+//         return json
+//     } else {
+//         throw new HttpError(res);
+//     }
+// }
 
   
 // Ask for a user name until github returns a valid user
-async function demoGithubUser() {
-    // had to copy solution
-    let user;
-    while(true){
-        let name = prompt("Enter a name?", "iliakan")
-        try{
-            user = await loadJson(`https://api.github.com/users/${name}`)
-            break
-        } catch(err){
-            if (err instanceof HttpError && err.response.status == 404) {
-                alert("No such user, please reenter.")
-            } else {
-                throw err;
-            }
-        }
-    }
+// async function demoGithubUser() {
+//     // had to copy solution
+//     let user;
+//     while(true){
+//         let name = prompt("Enter a name?", "iliakan")
+//         try{
+//             user = await loadJson(`https://api.github.com/users/${name}`)
+//             break
+//         } catch(err){
+//             if (err instanceof HttpError && err.response.status == 404) {
+//                 alert("No such user, please reenter.")
+//             } else {
+//                 throw err;
+//             }
+//         }
+//     }
 
-    alert(`Full name: ${user.name}.`)
-    return user
-}
+//     alert(`Full name: ${user.name}.`)
+//     return user
+// }
   
 // demoGithubUser()
     // .catch(err => {
@@ -917,19 +917,19 @@ async function demoGithubUser() {
 
 // We have a “regular” function called f. How can you call the async function wait() and use its result inside of f?
 
-async function wait() {
-    await new Promise(resolve => setTimeout(resolve, 1000));
+// async function wait() {
+//     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    return 10;
-  }
+//     return 10;
+//   }
   
-  function f() {
-    // didnt over think this, it was pretty easy
-    wait().then(result => {
-        console.log(result)
-    })
+//   function f() {
+//     // didnt over think this, it was pretty easy
+//     wait().then(result => {
+//         console.log(result)
+//     })
 
-  }
+//   }
 
 //   f()
 
@@ -937,3 +937,4 @@ async function wait() {
 ///////////////
 // Scratch Pad
 ///////////////
+
